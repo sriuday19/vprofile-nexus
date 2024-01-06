@@ -14,7 +14,7 @@ pipeline {
         scannerHome = tool 'sonar4'
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "172.31.29.25:8081"
+        NEXUS_URL = "172.31.82.67:8081"
         NEXUS_REPOSITORY = "vprofile-repo"
         NEXUS_CREDENTIAL_ID = "nexus-token"
     }
@@ -111,7 +111,7 @@ pipeline {
        always {
           echo "slack notification"
           slackSend(
-            channel: '#slack-1',
+            channel: '#vprofile-app',
             color: COLOR_MAP[currentBuild.currentResult],
             message: "*${currentBuild.currentResult}:* - job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at ${env.BUILD_URL}"
           )
